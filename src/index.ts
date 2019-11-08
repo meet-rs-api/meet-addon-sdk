@@ -129,7 +129,6 @@ export class AddonsSdk {
                 this.preprocessInitMessage(context);
                 this.onInit(context);
                 return;
-                break;
             case MessageType.DATA:
             case MessageType.READY:
             case MessageType.TOOLTIPS:
