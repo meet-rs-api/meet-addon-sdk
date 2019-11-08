@@ -23,7 +23,7 @@ export class HostInfo {
     public origin: string;
 
    /**
-     * Address of the host of the api addins is calling to validate the token etc
+     * Address of the host of the api addons is calling to validate the token etc
      *
      * @type {string}
      * @memberof HostInfo
@@ -32,7 +32,7 @@ export class HostInfo {
 }
 
 /**
- * Non session sepcific paarticipant info.
+ * Non session specific participant info.
  *
  * @export
  * @class ParticipantUserInfo
@@ -69,8 +69,16 @@ export class ParticipantUserInfo {
     */
    public color: string;
    
+   /**
+    * Gets or sets information if participant is a guest user. 
+    *
+    * @type {boolean}
+    * @memberof ParticipantUserInfo
+    */
+   public isGuest: boolean;
+
     /**
-     * Requested theme of the addin UI.
+     * Requested theme of the addon UI.
      * Default is dark theme. 
      * 
      * @type {('dark' | 'light')}
