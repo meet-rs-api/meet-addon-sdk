@@ -128,6 +128,7 @@ export class AddonsSdk {
                 const context = hostMessage as InitMessage;
                 this.preprocessInitMessage(context);
                 this.onInit(context);
+                return;
                 break;
             case MessageType.DATA:
             case MessageType.READY:
