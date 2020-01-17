@@ -235,6 +235,15 @@ export class InitMessage extends AddonMessage {
      */
     public mode: AddonMode = AddonMode.NORMAL;
 
+    /**
+     * Gets or sets the information about the meeting state in the moment
+     * of addon initialization.
+     *
+     * @type {PredefinedMeetingState}
+     * @memberof InitMessage
+     */
+    public state: PredefinedMeetingState;
+
        /**
      * Creates an instance of InitMessage.
      * @memberof InitMessage
