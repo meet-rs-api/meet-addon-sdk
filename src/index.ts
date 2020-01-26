@@ -166,4 +166,9 @@ export class AddonsSdk {
     }
 }
 
-export default new AddonsSdk();
+// exposing sdk as  a global variable
+const w = window as any;
+w.vivani = w.vivani || {};
+w.vivani.sdk = w.vivani.sdk || new AddonsSdk();
+
+export default w.vivani.sdk;
