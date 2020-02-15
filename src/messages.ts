@@ -14,7 +14,13 @@ export enum MessageType {
      * Event message of this type is sent when meet participant user profile change.
      * e.g. Display name, color, theme? 
      */
-    USER_PROFILE = 'meet-userprofile-changed'
+    USER_PROFILE = 'meet-userprofile-changed',
+
+    /**
+     * Event sent from addon to host requesting to be re-initialized 
+     * (eg. token addon is using expired)
+     */
+    INIT_REQUESTED = 'meet-init-requested'
 }
 
 export enum AddonMode {
