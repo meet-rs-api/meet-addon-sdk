@@ -67,6 +67,21 @@ export class AddonsSdk {
     }
 
     /**
+     * Informs the host that addon needs to be reinitialized with 
+     * fresh init context in order to operate properly
+     * (e.g. addon token expired and addon needs from host new token)
+     * @memberof AddonsSdk
+     */
+    public initRequest = () => {
+        const postMessage = JSON.stringify(new ReadyMessage());
+        if (this.logging <= LogLevel.Debug) {
+            // tslint:disable-next-line: no-console
+            console.log('[SDK][Index]::ready - origin: *', postMessage);
+        }
+        window.parent.postMessage(postMessage, '*');
+    }
+
+    /**
      * Send a message through the host to other participants 
      * using addon at the same time
      * 

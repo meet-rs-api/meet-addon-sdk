@@ -49,7 +49,7 @@ export enum PredefinedColor {
 
 /**
  * Structure describing in privacy protecting way
- * addon user who has joing to a meeting session
+ * addon user who had joined to a meeting session
  *
  * @export
  * @class ParticipantJoinInfo
@@ -166,7 +166,7 @@ export class AddonMessage {
     public type: string;
     
     /**
-     * Event payload conatining the data which message receiver will know how to interpret
+     * Event payload containing the data which message receiver will know how to interpret
      * for a given message type.
      *
      * @type {string}
@@ -177,7 +177,7 @@ export class AddonMessage {
 
 /**
  * A message sent from host to addon 
- * requesting from addong to perform intialization
+ * requesting from addon to perform initialization
  * with given parameters.
  *
  * @export
@@ -188,7 +188,7 @@ export class InitMessage extends AddonMessage {
 
     /**
      * Host runtime context defining in privacy protecting way 
-     * meeting attributes which addon uses to operateestablishe its own session.
+     * meeting attributes which addon uses to establish its own session.
      *
      * @type {Context}
      * @memberof InitMessage
@@ -224,7 +224,7 @@ export class InitMessage extends AddonMessage {
 
     /**
      * Zero or more participants who are online in the moment of
-     * addon initialziation defined with addon specific identifiers.
+     * addon initialization defined with addon specific identifiers.
      *
      * @type {ParticipantInfo[]}
      * @memberof InitMessage
@@ -233,7 +233,7 @@ export class InitMessage extends AddonMessage {
 
     /**
      * Gets ths info about the mode in which addon is 
-     * requested to be inialized which addon should use 
+     * requested to be initialized which addon should use 
      * to configure its UI 
      *
      * @type {AddonMode}
@@ -261,7 +261,7 @@ export class InitMessage extends AddonMessage {
 }
 
 /**
- * A message sent from addont o a host when
+ * A message sent from addon to a host when
  * initialization had completed and addon is 
  * ready for performing its functionality
  *
@@ -270,6 +270,36 @@ export class InitMessage extends AddonMessage {
  * @extends {AddonMessage}
  */
 export class ReadyMessage extends AddonMessage {
+
+    /**
+     * Creates an instance of ReadyMessage.
+     * @memberof ReadyMessage
+     */
+    constructor() {
+        super();
+        
+        this.type = MessageType.READY;
+    }
+}
+
+/**
+ * A message sent from addon to a host when
+ * host needs to initialize the addon 
+ * (e.g. addon token expired and addon needs a new token)
+ *
+ * @export
+ * @class InitRequestMessage
+ * @extends {AddonMessage}
+ */
+export class InitRequestMessage extends AddonMessage {
+
+    /**
+     * Identifier of the addon requesting initialization.
+     *
+     * @type {string}
+     * @memberof InitRequestMessage
+     */
+    public addonIdentifier: string;
 
     /**
      * Creates an instance of ReadyMessage.
