@@ -1,7 +1,7 @@
 
 import {  HostInfo } from './context';
 
-import { AddonMessage, InitMessage,  MessageType, ReadyMessage } from './messages';
+import { AddonMessage, InitMessage,  InitRequestMessage, MessageType, ReadyMessage } from './messages';
 
 export * from './context';
 export * from './messages';
@@ -73,12 +73,7 @@ export class AddonsSdk {
      * @memberof AddonsSdk
      */
     public initRequest = () => {
-        const postMessage = JSON.stringify(new ReadyMessage());
-        if (this.logging <= LogLevel.Debug) {
-            // tslint:disable-next-line: no-console
-            console.log('[SDK][Index]::ready - origin: *', postMessage);
-        }
-        window.parent.postMessage(postMessage, '*');
+        this.sendMessage(new InitRequestMessage());
     }
 
     /**

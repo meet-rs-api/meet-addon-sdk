@@ -294,20 +294,12 @@ export class ReadyMessage extends AddonMessage {
 export class InitRequestMessage extends AddonMessage {
 
     /**
-     * Identifier of the addon requesting initialization.
-     *
-     * @type {string}
-     * @memberof InitRequestMessage
-     */
-    public addonIdentifier: string;
-
-    /**
      * Creates an instance of ReadyMessage.
      * @memberof ReadyMessage
      */
     constructor() {
         super();
         
-        this.type = MessageType.READY;
+        this.type = MessageType.INIT_REQUESTED;
     }
 }
