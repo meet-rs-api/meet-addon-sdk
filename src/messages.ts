@@ -128,6 +128,7 @@ export enum PredefinedMeetingState {
     MEETING_CANCELED = 'MeetingCanceled',
     MEETING_ARCHIVED = 'MeetingArchived',
 
+    SCHEDULING_STARTED = 'SchedulingStarted',
     SCHEDULING_TIME = 'SchedulingTime',
     SCHEDULING_FAILED = 'SchedulingFailed',
     SCHEDULING_COMPLETED = 'SchedulingCompleted',
