@@ -124,6 +124,15 @@ export class AddonsSdk {
             return;
         }
 
+        if (typeof messageEvent.data !== 'string') {
+            if (this.logging <= LogLevel.Trace) {
+                // tslint:disable-next-line: no-console
+                console.warn('[SDK][Index]::handleReceivedMessage - invalid event data', messageEvent.data);
+            }
+            return;
+
+        }
+
         const hostMessage: AddonMessage = JSON.parse(messageEvent.data);
         if (!hostMessage || !hostMessage.type) {
             if (this.logging <= LogLevel.Trace) {
@@ -157,6 +166,7 @@ export class AddonsSdk {
                 if (this.logging <= LogLevel.Debug) {
                     this.errorHandler('[AddonsSdk]:onReceived - Unknown host message of type:' + hostMessage.type); 
                 }
+                return;
         }
 
         if (this.logging <= LogLevel.Trace) {
