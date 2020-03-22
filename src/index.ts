@@ -154,7 +154,7 @@ export class AddonsSdk {
             case MessageType.TOOLTIPS:
             case MessageType.PARTICIPANTS:
             case MessageType.MEET_STATE:
-            case MessageType.ADDON_MODE:
+            case MessageType.HOST_CHANGED:
             case MessageType.REPOSITION:
             case MessageType.USER_PROFILE:
                 if (this.logging <= LogLevel.Trace) {
