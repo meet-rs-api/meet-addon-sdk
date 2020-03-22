@@ -7,7 +7,6 @@ export enum MessageType {
     PARTICIPANTS = 'meet-message-participants',
     MEET_STATE = 'meet-state-changed',
     TOOLTIPS = 'meet-tooltip-reqest',
-    ADDON_MODE = 'meet-addonmode-change',
     REPOSITION = 'meet-float-reposition',
     
     /**
@@ -20,12 +19,24 @@ export enum MessageType {
      * Event sent from addon to host requesting to be re-initialized 
      * (eg. token addon is using expired)
      */
-    INIT_REQUESTED = 'meet-init-requested'
+    INIT_REQUESTED = 'meet-init-requested',
+
+    /**
+     * Event message of this type os sent when host change the context in which addon
+     * exists (theme change, fullscreen state etc)
+     */
+    HOST_CHANGED = 'meet-host-changed'
 }
 
 export enum AddonMode {
     HIDDEN = 'hidden',
     MINI = 'mini',
+    NORMAL = 'normal',
+    FULLSCREEN = 'fullscreen'
+}
+
+export enum ChromeState {
+    TOPBAR = 'topbar',
     NORMAL = 'normal',
     FULLSCREEN = 'fullscreen'
 }
@@ -45,6 +56,11 @@ export enum PredefinedColor {
     DARK_PINK = '#C2185B',
 
     DARK_TEAL = '#00796B'
+}
+
+export enum Theme {
+    LIGHT = 'light',
+    DARK = 'dark'
 }
 
 /**
@@ -251,6 +267,13 @@ export class InitMessage extends AddonMessage {
      */
     public state: PredefinedMeetingState;
 
+    /**
+     * Gets the info about chrome state of the host.
+     * @type {ChromeState}
+     * @memberof HostChangedMessage
+     */
+    public chromeState: ChromeState;
+
        /**
      * Creates an instance of InitMessage.
      * @memberof InitMessage
@@ -300,7 +323,52 @@ export class InitRequestMessage extends AddonMessage {
      */
     constructor() {
         super();
-        
         this.type = MessageType.INIT_REQUESTED;
+    }
+}
+
+/**
+ * Event message of this type os sent when host change the context in which addon
+* exists (theme change, fullscreen state etc)
+ *
+ * @export
+ * @class HostChangedMessage
+ * @extends {AddonMessage}
+ */
+export class HostChangedMessage extends AddonMessage {
+    
+    /**
+     * Gets ths info about the mode in which addon is 
+     * requested to be initialized which addon should use 
+     * to configure its UI 
+     *
+     * @type {AddonMode}
+     * @memberof InitMessage
+     */
+    public addonMode: AddonMode;
+
+    /**
+     * Gets the info about chrome state of the host.
+     * @type {ChromeState}
+     * @memberof HostChangedMessage
+     */
+    public chromeState: ChromeState;
+
+    /**
+     * Color theme of the addon
+     *
+     * @type {Theme}
+     * @memberof HostChangedMessage
+     */
+    public theme: Theme;
+
+      /**
+     * Creates an instance of HostChangedMessage.
+     * @memberof HostChangedMessage
+     */
+    constructor() {
+        super();
+        
+        this.type = MessageType.HOST_CHANGED;
     }
 }
