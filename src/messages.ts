@@ -58,7 +58,7 @@ export enum PredefinedColor {
     DARK_TEAL = '#00796B'
 }
 
-export enum Theme {
+export enum AppTheme {
     LIGHT = 'light',
     DARK = 'dark'
 }
@@ -357,10 +357,10 @@ export class HostChangedMessage extends AddonMessage {
     /**
      * Color theme of the addon
      *
-     * @type {Theme}
+     * @type {AppTheme}
      * @memberof HostChangedMessage
      */
-    public theme: Theme;
+    public theme: AppTheme;
 
       /**
      * Creates an instance of HostChangedMessage.
