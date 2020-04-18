@@ -401,6 +401,8 @@ export class AddonActivatedMessage extends AddonMessage {
         
         this.type = MessageType.STATE_ACTIVE;
     }
+
+    public inactiveRoute!: string;
 }
 
 /**
@@ -421,4 +423,6 @@ export class AddonInactivatedMessage extends AddonMessage {
         
         this.type = MessageType.STATE_INACTIVE;
     }
+
+    public activeRoute!: string;
 }
