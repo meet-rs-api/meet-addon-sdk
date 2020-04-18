@@ -25,7 +25,17 @@ export enum MessageType {
      * Event message of this type os sent when host change the context in which addon
      * exists (theme change, fullscreen state etc)
      */
-    HOST_CHANGED = 'meet-host-changed'
+    HOST_CHANGED = 'meet-host-changed',
+
+    /**
+     * An event sent to addon when host makes addon active.
+     */
+    STATE_ACTIVE = 'meet-addon-active',
+
+    /**
+     * An event sent to addon when addon stops being active by host activating other addon.
+     */
+    STATE_INACTIVE = 'meet-addon-inactive'
 }
 
 export enum AddonMode {
@@ -370,5 +380,45 @@ export class HostChangedMessage extends AddonMessage {
         super();
         
         this.type = MessageType.HOST_CHANGED;
+    }
+}
+
+/**
+ * A messages sent to addon by host when host activates addon.
+ *
+ * @export
+ * @class AddonActivatedMessage
+ * @extends {AddonMessage}
+ */
+export class AddonActivatedMessage extends AddonMessage {
+    
+    /**
+     * Creates an instance of AddonActivatedMessage.
+     * @memberof AddonActivatedMessage
+     */
+    constructor() {
+        super();
+        
+        this.type = MessageType.STATE_ACTIVE;
+    }
+}
+
+/**
+ * A messages sent to addon by host when host inactivate addon.
+ *
+ * @export
+ * @class AddonInactivatedMessage
+ * @extends {AddonMessage}
+ */
+export class AddonInactivatedMessage extends AddonMessage {
+    
+    /**
+     * Creates an instance of AddonInactivatedMessage.
+     * @memberof AddonInactivatedMessage
+     */
+    constructor() {
+        super();
+        
+        this.type = MessageType.STATE_INACTIVE;
     }
 }
