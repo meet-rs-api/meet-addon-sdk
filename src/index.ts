@@ -157,6 +157,8 @@ export class AddonsSdk {
             case MessageType.HOST_CHANGED:
             case MessageType.REPOSITION:
             case MessageType.USER_PROFILE:
+            case MessageType.STATE_ACTIVE:
+            case MessageType.STATE_INACTIVE:
                 if (this.logging <= LogLevel.Trace) {
                     // tslint:disable-next-line: no-console
                     console.log('[SDK][Index]::handleReceivedMessage-switch', hostMessage.type, hostMessage);
