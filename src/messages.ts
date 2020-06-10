@@ -35,7 +35,13 @@ export enum MessageType {
     /**
      * An event sent to addon when addon stops being active by host activating other addon.
      */
-    STATE_INACTIVE = 'meet-addon-inactive'
+    STATE_INACTIVE = 'meet-addon-inactive',
+
+    /**
+     * An event sent from addon to host informing it that 
+     * it needs to update icon badge adorment text.
+     */
+    BADGE_TEXT_UPDATE = 'meet-badge-update'
 }
 
 export enum AddonMode {
@@ -425,4 +431,27 @@ export class AddonInactivatedMessage extends AddonMessage {
     }
 
     public activeRoute!: string;
+}
+
+
+/**
+ * A messages sent to addon by host when host inactivate addon.
+ *
+ * @export
+ * @class BadgeUpdateMessage
+ * @extends {AddonMessage}
+ */
+export class BadgeUpdateMessage extends AddonMessage {
+    
+    /**
+     * Creates an instance of BadgeUpdateMessage.
+     * @memberof BadgeUpdateMessage
+     */
+    constructor() {
+        super();
+        
+        this.type = MessageType.BADGE_TEXT_UPDATE;
+    }
+
+    public text: string;
 }
