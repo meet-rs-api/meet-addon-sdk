@@ -5,8 +5,18 @@ export enum MessageType {
     INIT = 'meet-sync-init',
     DATA = 'meet-message-data',
     PARTICIPANTS = 'meet-message-participants',
+    
+    /**
+     * Host sends this event to addon with information on new meeting state.
+     */
     MEET_STATE = 'meet-state-changed',
+
     TOOLTIPS = 'meet-tooltip-reqest',
+
+    /**
+     * Addon sends this request to host asking him to reposition its iframe
+     * with the sent repositioning metadata captured in the addon.
+     */
     REPOSITION = 'meet-float-reposition',
     
     /**
@@ -41,7 +51,15 @@ export enum MessageType {
      * An event sent from addon to host informing it that 
      * it needs to update icon badge adorment text.
      */
-    BADGE_TEXT_UPDATE = 'meet-badge-update'
+    BADGE_TEXT_UPDATE = 'meet-badge-update',
+
+    /**
+     * Addon sends this message to host to request from host
+     * to hide pr show the host shell UI elements etc so user can focus on addon 
+     * (e.g. Twilio addon before join can request host to hide app bar so user will not be distracted)
+     * (e.g. Twilio addon after user joined the call can request host to show app bar)
+     */
+    HOST_SHELL_REQUEST = 'meet-shell-request',
 }
 
 export enum AddonMode {
@@ -454,4 +472,27 @@ export class BadgeUpdateMessage extends AddonMessage {
     }
 
     public text: string;
+}
+
+export declare type ShellState = 'show' | 'state';
+
+export class HostShellRequestMessage extends AddonMessage {
+
+    /**
+     * Creates an instance of HostShellRequestMessage.
+     * @memberof HostShellRequestMessage
+     */
+    constructor() {
+        super();
+        
+        this.type = MessageType.HOST_SHELL_REQUEST;
+    }
+
+    /**
+     * What is the state of the host addon is  requesting.
+     *
+     * @type {boolean}
+     * @memberof HostShellRequestMessage
+     */
+    public state: ShellState;
 }
