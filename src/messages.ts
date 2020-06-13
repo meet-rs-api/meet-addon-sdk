@@ -474,7 +474,7 @@ export class BadgeUpdateMessage extends AddonMessage {
     public text: string;
 }
 
-export declare type ShellState = 'show' | 'state';
+export declare type ShellState = 'show' | 'hide';
 
 export class HostShellRequestMessage extends AddonMessage {
 
