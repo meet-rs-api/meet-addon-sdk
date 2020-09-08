@@ -60,6 +60,11 @@ export enum MessageType {
      * (e.g. Twilio addon after user joined the call can request host to show app bar)
      */
     HOST_SHELL_REQUEST = 'meet-shell-request',
+
+    /**
+     * Host sends this message to addons every time a key down event is detected
+    */
+    HOST_KEYBOARD_DOWN = 'meet-keyboard-down',
 }
 
 export enum AddonMode {
