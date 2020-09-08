@@ -501,3 +501,28 @@ export class HostShellRequestMessage extends AddonMessage {
      */
     public state: ShellState;
 }
+
+export class KeyDownMessage extends AddonMessage {
+
+    /**
+     * Creates an instance of KeyDownMessage.
+     * @memberof KeyDownMessage
+     */
+    constructor() {
+        super();
+
+        this.type = MessageType.HOST_KEYBOARD_DOWN;
+    }
+
+    public altKey: boolean;
+
+    public ctrlKey: boolean;
+    
+    public keyCode: number;
+    
+    public metaKey: boolean;
+    
+    public shiftKey: boolean;
+    
+    public returnValue: boolean;
+}
